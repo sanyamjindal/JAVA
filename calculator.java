@@ -4,10 +4,10 @@ public class calculator {
         double add,sub,pro,div;
         double a,b;
         Scanner obj = new Scanner(System.in);
-        System.out.println("Enter num1");
+        System.out.println("Enter number1");
         a = obj.nextInt();
 
-        System.out.println("Enter num2");
+        System.out.println("Enter number2");
         b = obj.nextInt();
 
         System.out.println("Eneter your choice \n1.Addition \n2.Subtraction \n3.Multiplication \n4.Division\n");
