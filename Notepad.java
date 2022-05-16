@@ -1,11 +1,16 @@
+import java.time.chrono.ThaiBuddhistChronology;
+
+import javax.swing.Action;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-
-public class GUI {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+  
+public class GUI implements ActionListener{
     
     JFrame window;
     JTextArea textArea;
@@ -13,6 +18,8 @@ public class GUI {
     JMenuBar menuBar;
     JMenu menuFile, menuEdit, menuFormat, menuColour;
     JMenuItem iNew, iOpen, iSave, iExit ,eCopy, ePaste, eUndo, eRedo;
+
+    Function_File file = new Function_File(this);
 public static void main(String[] args) {
     
     new GUI();
@@ -63,9 +70,13 @@ public void createMenuBar(){
 public void createFileMenu(){
 
     iNew = new JMenuItem("New");
+    iNew.addActionListener(this);
+    iNew.setActionCommand("New");
     menuFile.add(iNew);
 
     iOpen = new JMenuItem("Open");
+    iOpen.addActionListener(this);
+    iOpen.setActionCommand("Open");
     menuFile.add(iOpen);
 
     iSave = new JMenuItem("Save");
@@ -90,4 +101,15 @@ public void createEditMenu(){
     menuEdit.add(eRedo);
 
 }
+
+public void actionPerformed(ActionEvent e){
+
+    String command = e.getActionCommand();
+
+    switch(command){
+        case "New":file.newFile(); break;
+        case "Open":file.open(); break;
+    }
+}
+
 }
